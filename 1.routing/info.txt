@@ -1,0 +1,34 @@
+Installation for Next12:
+npx create-next-app@12 --typescript app_name
+
+
+Routing:
+It supports file/page based routing.
+Routing are associated with the file name  defined in pages folder
+
+index.tsx >> / (Root route)
+about.tsx >> /about (About page route)
+
+
+Dynamic Routes:
+
+A folder with route name should be created for implementing Nested Routing
+1. To render /products/:productId a product folder should be created and then [productId].tsx should be created inside that folder
+2. Before matching dynamic route it will look for the exact file name with path. If it doesn't match then it will match for dynamic route path
+   Ex: /products/mobile with match pages/products/mobile.tsx folder whereas /products/laptop will match pages/products/[productId].tsx
+
+Catch All routes:
+In order to cache all routes starts with pathname/*/*.....   [...params.tsx] can be created inside the pathname folder
+Ex: pages/docs/[...params].tsx will match any routes starts with /docs****. It can be useful for SEO
+
+Navigating Routes:
+1. Link can be used to navigate routes from one page to another
+2. replace property can be used to replace the current page with another one
+3. router.push can be used to route programmatically
+
+
+Custom 404 Page:
+Define 404.tsx in root of the pages to use a custom 404 page
+
+
+

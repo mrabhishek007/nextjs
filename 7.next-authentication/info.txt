@@ -1,0 +1,16 @@
+Authentication Summary
+
+
+Authentication in Next.js next-auth package
+Configure the next-auth library with GitHub
+Sign in and Sign out
+Client-side authentication using the useSession hook
+Securing pages client side using the getSession function
+next-auth Provider which improves performance, reduces network calls and 
+avoids page flicker when rendering
+Server-side authentication with the getSession function in 
+getServerSideProps
+Secured pages server side by redirecting from getServerSideProps 
+getSession function can be used for authenticating API routes
+How to connect to a database like mongod to persist user data
+Callbacks let you customize the session object

@@ -1,0 +1,35 @@
+1. If you navigate directly to the page route, The HTML file will be served
+
+
+2. If you navigate the page route from different route, the page is created on the client side using the javascript & JSON Fetched from server.
+   The related page js & json gets downloaded in the previous page load when next js has link reference defined to next page
+
+3. async getStaticProps function will be used to process any task on server and pass the data to the page component via props.
+4. async getStaticPaths function will be used if the params id is dynamic . It returns pathname & fallback for which the next js generates build at the build time.
+   There are following senerio for the fallback property:
+
+   1. fallback: false
+   When fallback is false getStaticPaths will be rendered to HTML at build time by getStaticProps. If path not matched fallback would be 404 page
+
+   2. fallback: true
+   When fallback is true the non matched path (Path which is not returned by getStaticProps) will not result at 404 page
+   instead next js will serve fallback version of the page on the first request for example: Here loading... will appear
+   In the background nextjs will statically generate the requested path html & json by running getStaticProps.
+   When the data is fetched the json will be populated with the fallback content.
+   Now new subsequent requests to the same path will serve the generated page just like other pages generated at the build time
+   Ex : When we don't know about no of blogs available then this options would be utilized
+   In above example Post Id 1-5 will be generated at build time while other post will be generated dynamically once user visit page for the first time
+
+   3. fallback : "blocking"
+   This is similar to fallback true but instead showing fallback ui , the browser will transition from requesting the page to the "the full page" is loaded.
+   There is no flash of loading/fallback state
+
+
+Issues:
+1. Build time is proportional to the number of pages in application.
+For Example: if an app has 1000 no of products, then it will take huge amount of time to build the initial static pages for the first time
+2. The generated static pages contains the static data but if the db data gets changed still old cached page will be served
+   For this solution Next js introduced "Incremental Static Regeneration"
+
+
+

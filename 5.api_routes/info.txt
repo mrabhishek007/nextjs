@@ -1,0 +1,75 @@
+
+// API Routes
+
+    Next JS is a full stack framework
+    You can write the FE code in React and also write APIs that can be called by the front end code
+    API routes allow you to create RESTFUL endpoints as part of your Next.js application folder structure
+    Within the pages folder, you need to create a folder called 'api'
+    Within that 'api' folder, you can define all the APIs for your application
+    You can add business logic without needing to write any additional custom server code and without having to configure any API routes
+
+
+    Instructions:
+    1. Create a api folder inside pages folder
+    2. Create the filename which will automatically get mapped to an url
+       EX: /pages/api/index.ts will get mapped to  /api endpoint
+           /pages/api/blog/recent.ts will get mapped to /api/blog/recent endpoint
+
+    ** HANDLING REQUESTS [GET, POST]
+    Next js exposes a func named "handler" which can be used to write business logic for api routes
+    This functions accepts "req" & "res" as parameter similar to getServerSideProps
+    "req.method" can be used to know type of http request like GET,POST,PATCH etc
+
+    EX:
+    export default function handler(req, res) {
+
+        if (req.method === 'GET') {
+            // Get data from database
+            return res.status(200).json(data)
+        }
+
+        if (req.method === 'POST') {
+            const data = req.body
+            // Save to db operation
+            return res.status(201).json(data)
+        }
+
+
+    }
+
+
+    ** HANDLING REQUESTS [DELETE, PUT, PATCH]
+    [pathnameId].ts should be created inside api Pathname folder in order to handle dynamic https requests with some params. This behaviour is same Page based routing mechanism
+    req.query can be used to get params name which can be used to handle patch, put, delete request where a param will be required
+    ex : const {commentId} = req.query
+
+
+    ** CACHING ALL API ROUTES
+
+    Catching routes can be done similarly to creating pages
+    [...params].ts can be created which will catch all routes params related to the path
+
+
+
+
+
+
+// API Routes Section Summary
+
+    API routing mechanism is similar to page based routing mechanism
+    APIs are associated with a route based on their file name
+    Every API route exports a default function typically named as handler function
+    The handler function receives the request and response as parameters
+    Cater to different request types like GET and POST using req.method
+    Dynamic API routes
+    Catch all API routes
+    How to handle a DELETE request
+    We should not call our own API routes for pre-rendering content
+
+
+
+//  Styling Summary
+    Global - In our application, we need to import the CSS file within pages/_app.js
+    Component Level - Next.js supports CSS Modules using a [name].module.css naming convention
+    SASS Support - Install the sass package
+    CSS-in-JS Solutions - Inline styles and Styled Components

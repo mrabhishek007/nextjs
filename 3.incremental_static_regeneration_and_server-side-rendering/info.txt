@@ -1,0 +1,19 @@
+// SERVER SIDE RENDERING
+
+1. Export a async func getServerSideProps inorder to implement Server Side rendering. It only runs on server.
+2. getServerSideProps is only used for pre-rendering and not client-side data fetching
+3. getServerSideProps should return a object and object should contains a props key which is an object
+4. getServerSideProps will run at request time
+
+
+
+// SERVER SIDE RENDERING WITH DYNAMIC PARAMS
+
+1. getServerSideProps provides context as an param from which contains following data:
+    params  >> Contains params details
+    query  >> Contains Request Params details
+    req >> Contains Request data similar to expressjs. It can be used to fetch Cookies, etc. Based on that specific response for a user can be returned,
+    res >> Response data also behaves similar to expressjs. It can be used to add cookies, etc
+
+
+// While building App No static HTML will be created for Server Side rendered Components. It will be generated at runtime
